@@ -1,20 +1,8 @@
 # Template Rust
 
-A forkable template for Rust projects. Start a new project with linting, formatting, and testing already configured—just rename and customize.
+A template for Rust projects. Start a new project with linting, formatting, and testing already configured—just rename and customize.
 
-## Quick Start
-
-```bash
-# Fork on GitHub, then clone your fork
-git clone git@github.com:YOUR_USERNAME/YOUR_PROJECT.git
-cd YOUR_PROJECT
-
-# Set up environment
-just bootstrap
-just test
-```
-
-## After Forking
+## Setup Instructions
 
 Rename the package to match your project:
 
