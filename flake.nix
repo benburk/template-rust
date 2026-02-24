@@ -21,7 +21,6 @@
           pkgs = nixpkgs.legacyPackages.${system};
         in
         {
-          # TODO: Update pname, version, and description
           default = pkgs.rustPlatform.buildRustPackage {
             pname = "template-rust";
             version = "0.1.0";
