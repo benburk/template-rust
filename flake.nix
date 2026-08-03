@@ -27,7 +27,6 @@
             src = ./.;
             cargoLock.lockFile = ./Cargo.lock;
             meta = {
-              description = "Forkable template for Rust projects";
               mainProgram = "template-rust";
             };
           };
