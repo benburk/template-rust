@@ -22,12 +22,12 @@
         in
         {
           default = pkgs.rustPlatform.buildRustPackage {
-            pname = "template-rust";
+            pname = "project-name";
             version = "0.1.0";
             src = ./.;
             cargoLock.lockFile = ./Cargo.lock;
             meta = {
-              mainProgram = "template-rust";
+              mainProgram = "project-name";
             };
           };
         }
