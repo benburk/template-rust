@@ -10,24 +10,27 @@ alias fmt := format
 
 # Format code
 format:
+    just --fmt
     dprint fmt
-    cargo fmt
-    fd -e nix | xargs -r nixfmt
+    cargo fmt --all
+    fd -e nix -X nixfmt
     # The trailing `.` is required: with no path, ripgrep reads stdin when
     # stdin is not a TTY and blocks forever instead of searching the tree.
     rg -l '[^\n]\z' --multiline . | xargs -r sed -i -e '$a\\'
 
 # Run linters and static analysis
 check:
+    just --fmt --check
     dprint check
-    cargo fmt --check
-    cargo clippy -- -D warnings
-    fd -e nix | xargs -r nixfmt --check
+    @fd -e md --hidden -E .git -X awk '/^[[:space:]]*[|]/ && length($0) > 80 {print FILENAME ":" FNR ": table row is " length($0) " chars (>80)"; bad=1} END {exit bad}'
+    cargo fmt --all -- --check
+    cargo clippy --workspace --all-targets -- -D warnings
+    fd -e nix -X nixfmt --check
     ! rg -l '[^\n]\z' --multiline .
 
 # Run the test suite
 test:
-    cargo test
+    cargo test --workspace
 
 # Build release binary
 build:
