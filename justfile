@@ -33,6 +33,7 @@ test:
     cargo test --workspace
 
 # Build release binary
+[group('podium')]
 build:
     cargo build --release
 
